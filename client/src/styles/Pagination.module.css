@@ -1,0 +1,49 @@
+.conteiner {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 40px;
+    justify-content: center;
+    display: flex;
+}
+
+.contMenor{
+    display: flex;
+    align-items: center;
+}
+
+.contMenor p {
+    display: flex;
+    height: 80%;
+    width: 5rem;
+    border: none;
+}
+
+.contMenor button{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border: none;
+    height: 80%;
+    width:6rem;
+    font-weight: bold;
+    font-weight: 100;
+    color: var(--navSecundary);
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.icon {
+    font-size: 1rem;
+}
+
+.contMenor b{
+    font-weight: bold;
+    background-color: rgb(202, 201, 201);
+    height: 80%;
+    width: 28%;
+    padding: 0px 3px;
+    margin-right: 2px;
+}

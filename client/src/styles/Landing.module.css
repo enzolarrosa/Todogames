@@ -1,0 +1,151 @@
+.conteiner {
+    width: 100%;
+    height: 100vh;
+    background-image: url('../img/langing2.gif');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contTitle {
+    display: flex;
+    height: 70%;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cont {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 50px;
+    background-color: rgba(24, 49, 92, 0.371);
+    border-radius: 5px;
+
+}
+
+.h1 {
+    font-weight: 400;
+    color: white;
+    animation-name: mover;
+    animation-duration: 2.1s;
+    animation-iteration-count: infinite;
+}
+
+.btn {
+    width: 130px;
+    height: 45px;
+    border-radius: 6px;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    color: rgb(24, 49, 92);
+    font-size: 1.1rem;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: rgb(24, 49, 92);
+    color: white;
+}
+
+@keyframes mover {
+5%{
+    transform: translateX(5%);
+}
+10% {
+    transform: translateX(10%);
+}
+13% {
+    transform: translateX(15%)
+}
+17% {
+    transform: translateX(24%)
+}
+
+20% {
+    transform: translateX(30%);
+}
+24% {
+    transform: translateX(35%)
+}
+27% {
+    transform: translateX(40%)
+}
+30% {
+    transform: translateX(50%);
+}
+33% {
+    transform: translateX(45%)
+}
+37%{
+    transform: translateX(40%);
+}
+40% {
+    transform: translateX(35%);
+}
+44% {
+    transform: translateX(30%)
+}
+48% {
+    transform: translateX(20%)
+}
+50% {
+    transform: translateX(10%);
+}
+54% {
+transform: translateX(0%)
+}
+58% {
+    transform: translateX(-5%)
+}
+60% {
+    transform: translateX(-10%)
+}
+64% {
+    transform: translateX(-15%)
+}
+68% {
+    transform: translateX(-20%)
+}
+70% {
+    transform: translateX(-30%)
+}
+74%{
+    transform: translateX(-40%)
+}
+78% {
+    transform: translateX(-45%)
+}
+80% {
+    transform: translateX(-40%)
+}
+84% {
+    transform: translateX(-35%)
+}
+88% {
+    transform: translateX(-30%)
+}
+
+90% {
+    transform: translateX(-20%)
+}
+94% {
+    transform: translateX(-14%)
+}
+97% {
+    transform: translateX(-10%)
+}
+100% {
+    transform: translateX(0%)
+}
+}

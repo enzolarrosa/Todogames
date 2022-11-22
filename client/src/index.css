@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bgSecundary);
+  background-size: 120%;
+}
+
+.none{
+  display: none;
+}
+
+:root {
+   --primary : rgb(255, 255, 255);
+   --navSecundary: rgb(17, 17, 17);
+   --navPrimary: rgb(255, 255, 255) ;
+   --bgPrimary:linear-gradient(rgba(56, 56, 56, 0.363),rgba(56, 56, 56, 0.363)), url('https://videogames-pied.vercel.app/static/media/background.8d5b4a63.jpg');
+   --bgSecundary: rgb(246, 244, 244);
+   --fontPrimary: black
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
