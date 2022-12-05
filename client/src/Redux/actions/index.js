@@ -22,7 +22,7 @@ export const getSearch = (name) => {
       if(info.data == 'not') {
         return dispatch({
           type: GET_SEARCH,
-          payload: 'not'
+          payload: ['not']
       })
       } else {
         return dispatch({

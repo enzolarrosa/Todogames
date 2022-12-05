@@ -11,6 +11,8 @@ import not from '../img/not.png'
 
 export default function ContCards(){
 
+
+
     const dispatch= useDispatch()
     const games= useSelector(state => state.games)
     const [page, setPage] = useState(1)
@@ -52,7 +54,7 @@ export default function ContCards(){
                     <Card key={e.id} id={e.id} name={e.name} img={e.img} release={e.release} rating={e.rating} description={e.description} genre={e.genre} platform={e.platform}   />
                     )})
             } */}
-            { currentGames == 'not'? <div className={c.contLoading}> <img src={not} alt='Loading' /> <p>Not Found...</p> </div> : currentGames.map(e => {
+            { !currentGames.length ? <div className={c.contLoading}> <img src='https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif' alt='Loading' /> <p>Loading...</p> </div>: currentGames[0] === 'not'? <div className={c.contLoading}> <img src={not} alt='Loading' /> <p>Not Found...</p> </div> : currentGames.map(e => {
                         return (
                             <Card key={e.id} id={e.id} name={e.name} img={e.img} release={e.release} rating={e.rating} description={e.description} genre={e.genre} platform={e.platform}   />
                             )})}

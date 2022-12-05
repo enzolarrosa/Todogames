@@ -45,19 +45,19 @@ export default function Detail() {
             <div className={c.info}>
               <div>
                 <p className={c.aditional}>Genre</p>
-                <p>{d?.genres.join(", ").split(",").join()}</p>
+                <p className={c.aditionalP}>{d?.genres.join(", ").split(",").join()}</p>
               </div>
               <div>
                 <p className={c.aditional}>Platform</p>
-                <p>{d?.platform[0]}</p>
+                <p className={c.aditionalP}>{d?.platform[0]}</p>
               </div>
               <div>
                 <p className={c.aditional}>Rating</p>
-                <p>{d?.rating}</p>
+                <p className={c.aditionalP}>{d?.rating}</p>
               </div>
               <div>
                 <p className={c.aditional}>Realease Data</p>
-                <p>{d?.date}</p>
+                <p className={c.aditionalP}>{d?.date}</p>
               </div>
             </div>
             {d?.screen && <p className={c.subtitle}>Screenshots </p>}

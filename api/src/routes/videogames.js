@@ -11,7 +11,7 @@ route.get('/', async (req,res) => {
         const {name} = req.query
         const allGames = await getGames();
         //si mandan name por query, hago la busqueda de un juego que incluya ese name
-        if(name && name.length >0) {
+        if(name) {
             const game= allGames.filter(e => e.name.toLowerCase().includes(name.toLowerCase()))
             if (game.length) {return res.json(game)}
             else {return res.send('not')}

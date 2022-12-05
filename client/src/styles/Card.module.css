@@ -1,7 +1,7 @@
 .conteiner{
         width: 22rem;
         height: 10rem;
-        background-color: rgb(255, 255, 255);
+        background-color: var(--bgCard);
         display: flex;
         flex-direction: row;
         border-radius: 20px;
@@ -20,7 +20,7 @@
 
 
 .divImg{
-    width: 48%;
+    width: 55%;
     height: 100%;
     border-radius: 20px;
 }
@@ -35,14 +35,14 @@
 .divP p {
     font-size: 0.8rem;
     text-decoration: red;
-    color: rgb(0, 0, 0);
+    color: var(--fontPrimary);
     font-weight: bold;
 }
 .title {
    font-weight: 600;
    padding: 0px 2px;
    color: white;
-   text-shadow: .05em  0em 0em black;
+   text-shadow: .05em  0em 0em var(--fontPrimary);
 }
 
 .rating {
@@ -52,22 +52,21 @@
     align-items: end;
     gap: 3px;
     
-    
 }
 
 .icon {
-    color: rgb(9, 9, 9);
+    color: var(--fontPrimary);
     font-size: 0.9rem ;
     
 }
 
 .divP{
-    padding: 3px;
+    padding: 0px 3px;
     width: 55%;
     height: 100%;
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
-    gap: 10px;
+
 }
 

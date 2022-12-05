@@ -1,6 +1,6 @@
 .conteiner {
     width: 100%;
-    background-color: var(--navPrimary);
+    background-color: var(--bgPrimary);
     height: auto;
 }
 
@@ -9,6 +9,7 @@
     height: auto;
     width: 100%;
     flex-direction: column;
+    background-color: var(--bgPrimary);
 }
 
 .contBack {
@@ -17,7 +18,7 @@
     justify-content: space-around;
     align-items: center;
     height: 8vh;
-    background-color: var(--navSecundary);
+    background-color: var(--navSecundary);  
 }
 
 .divBack {
@@ -73,7 +74,7 @@
     padding: 0;
     margin: 0;
     font-weight: bold;
-    color: rgb(255, 255, 255);
+    color: white;
     font-size: 1.4rem;
     font-family:Verdana, Geneva, Tahoma, sans-serif ;
 }
@@ -91,21 +92,17 @@
     text-align: start;
     font-weight: 600;
     font-size: 1.5rem;
+    color: var(--detail);
     margin: 0;
     padding-bottom: 15px;
-    border-bottom: 2px solid var(--fontPrimary);
 }
 
-.hr {
-    background-color: var(--fontPrimary);
-    width: 86%;
-    font-size: 2rem;
-}
+
 
 .information {
     width: 85%;
     text-align: start;
-    color: rgb(0, 0, 0);
+    color: var(--detail);
     font-size: 0.9rem;
     
 }
@@ -119,6 +116,11 @@
 
 .aditional {
     font-weight: bold   ;
+    color: var(--detail);
+}
+
+.aditionalP {
+    color: var(--detail);
 }
 
 .constScreen {
@@ -157,7 +159,8 @@
 }
 
 .play:hover {
-    background-color: var(--fontPrimary);
+    border: 2px solid var(--detail);
+    background-color: var(--detail);
     color: white;
 }
 

@@ -5,21 +5,30 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--bgSecundary);
+  background: var(--bgPrimary);
   background-size: 120%;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 .none{
   display: none;
 }
 
+.dark {
+  background-color: var(--bgSecundary);
+}
+
 :root {
    --primary : rgb(255, 255, 255);
-   --navSecundary: rgb(17, 17, 17);
-   --navPrimary: rgb(255, 255, 255) ;
-   --bgPrimary:linear-gradient(rgba(56, 56, 56, 0.363),rgba(56, 56, 56, 0.363)), url('https://videogames-pied.vercel.app/static/media/background.8d5b4a63.jpg');
-   --bgSecundary: rgb(246, 244, 244);
-   --fontPrimary: black
+   /* --navSecundary: rgb(17, 17, 17); */
+   --navSecundary: #181818;
+   --navPrimary: rgb(39, 39, 39) ;
+   --bgPrimary: rgb(244, 244, 244) ;
+   --bgSecundary: #1c1c1e;
+   --bgCard: rgb(249, 249, 249) ;
+   --detail: black;
+   --fontPrimary: black ;
 }
 
 code {

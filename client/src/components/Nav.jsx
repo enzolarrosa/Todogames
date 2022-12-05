@@ -7,6 +7,38 @@ import { getSearch } from '../Redux/actions';
 import n from '../styles/Nav.module.css'
 
 export default function Nav(){
+    function darkMode(){
+
+        const rootStyle= document.documentElement.style
+        const sun= document.querySelector('#sun')
+        const moon= document.querySelector('#moon')
+            
+
+                rootStyle.setProperty("--bgPrimary",'#32353c' )
+                rootStyle.setProperty("--bgCard",'#141414' )
+                rootStyle.setProperty("--fontPrimary",'white' )
+                rootStyle.setProperty("--navSecundary",'#32353c' )
+                rootStyle.setProperty("--detail",'white' )
+                moon.classList.toggle('none')
+                sun.classList.toggle('none')
+
+        }
+        function ligthMode(){
+
+            const rootStyle= document.documentElement.style
+            const sun= document.querySelector('#sun')
+            const moon= document.querySelector('#moon')
+                
+                rootStyle.setProperty("--bgPrimary", 'rgb(243, 243, 243)')
+                rootStyle.setProperty("--bgCard",'rgb(249, 249, 249)' )
+                rootStyle.setProperty("--fontPrimary",'black' )
+                rootStyle.setProperty("--navSecundary",'#181818' )
+                rootStyle.setProperty("--detail",'black' )
+                sun.classList.toggle('none')
+                moon.classList.toggle('none')
+        
+            }
+
     const dispatch = useDispatch()
     const handleName = async (e) => {
       e.preventDefault()
@@ -30,10 +62,10 @@ export default function Nav(){
             <input onChange={(e) => handleName(e)} className={n.input} type='search' placeholder='Videogame...' />
             </div>
             <div>
-                <button id='sun' className='none'>
+                <button onClick={() => ligthMode()} id='sun' className='none'>
                 <FaSun/>
                 </button>
-                <button id='moon'>
+                <button onClick={() => darkMode()} id='moon'>
                 <FaMoon/>
                 </button>
             </div>
