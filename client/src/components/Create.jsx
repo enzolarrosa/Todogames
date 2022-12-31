@@ -30,14 +30,16 @@ export default function Create () {
         ...select
         }
         console.log(obj)
+        console.log(select)
     }
 
     const handlePlatform = (e) =>{
         e.preventDefault()
+        console.log('hola: ' + select.platform)
         if(!select.platform.includes(e.target.value)){
             stateSelect({
                ...select,
-               [e.target.name]: [...select.platform,e.target.value] 
+               platform: [...select.platform,e.target.value] 
             }) 
         }
     }
@@ -47,7 +49,7 @@ export default function Create () {
         if(!select.genres.includes(e.target.value)){
             stateSelect({
                ...select,
-               [e.target.name]: [...select.genres,e.target.value] 
+               genres: [...select.genres,e.target.value] 
             }) 
         }
     }
