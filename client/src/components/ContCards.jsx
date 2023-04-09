@@ -25,7 +25,7 @@ export default function ContCards(){
     useEffect(() => {
         dispatch(getGames())
         dispatch(getGenres())
-    },[dispatch])
+    },[games])
 
     const pagination = (pageNumber) => {
         setPage(pageNumber)

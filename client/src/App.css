@@ -14,8 +14,8 @@
 }
 
 #sun{
-  width: 150px;
-  height: 150px;
+  width: 30px;
+  height: 30px;
   background-color: rgba(59, 59, 59, 0);
   color: rgb(255, 255, 255);
   font-size: 1.5rem;
@@ -25,8 +25,8 @@
 }
 
 #moon{
-  width: 150px;
-  height: 150px;
+  width: 30px;
+  height: 30px;
   background-color: rgba(59, 59, 59, 0);
   color: rgb(255, 255, 255);
   border: none;

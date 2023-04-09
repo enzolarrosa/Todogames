@@ -27,10 +27,10 @@
 }
 
 .searchBar button {
-    width: 15%;
+    width: 5%;
     display: flex;
     border: none;
-    height: 50%;
+    height: 70%;
     background-color: rgb(255, 255, 255);
     border-top: 2px solid var(--primary);
     border-bottom: 2px solid var(--primary);
@@ -49,7 +49,7 @@
     border: none;
     background-color: white;
     width: 50%;
-    height: 50%;
+    height: 70%;
     padding-left: 8px;
     outline: none;
     border-top: 2px solid var(--primary);
