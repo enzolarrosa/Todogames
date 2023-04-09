@@ -1,5 +1,5 @@
 .conteiner{
-        width: calc(90% / 2);
+        width: 50%;
         height: 12rem;
         background-color: var(--bgCard);
         display: flex;
