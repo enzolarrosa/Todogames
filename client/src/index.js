@@ -7,6 +7,8 @@ import App from './App';
 import store from './Redux/store'
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios'
+import dotenv from 'dotenv'
+dotenv.config()
 
 // axios default in local
 // axios.defaults.baseURL= "http://localhost:3001"
