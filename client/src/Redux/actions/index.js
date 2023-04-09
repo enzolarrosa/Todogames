@@ -8,7 +8,7 @@ export const SET_DETAIL = 'SET_DETAIL'
 
 export const getGames = () => {
     return async function (dispatch) {
-        const info = await axios.get('http://localhost:3001/videogames')
+        const info = await axios.get('/videogames')
         return dispatch({
             type: GET_GAMES,
             payload: info.data
@@ -18,7 +18,7 @@ export const getGames = () => {
 
 export const getSearch = (name) => {
   return async function (dispatch) {
-      const info = await axios.get('http://localhost:3001/videogames?name=' +name)
+      const info = await axios.get('/videogames?name=' +name)
       if(info.data == 'not') {
         return dispatch({
           type: GET_SEARCH,
@@ -35,7 +35,7 @@ export const getSearch = (name) => {
 
 export const getGenres = () => {
     return async function (dispatch) {
-      const info = await axios.get('http://localhost:3001/genre')
+      const info = await axios.get('/genre')
       return dispatch({
         type: GET_GENRES,
         payload: info.data
@@ -45,7 +45,7 @@ export const getGenres = () => {
 
 export const getDetail = (id) => {
     return async function (dispatch) {
-      const info = await axios.get(`http://localhost:3001/videogames/${id}`)
+      const info = await axios.get(`/videogames/${id}`)
       return dispatch({
         type: GET_DETAIL,
         payload: info.data

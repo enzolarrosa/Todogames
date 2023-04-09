@@ -6,6 +6,13 @@ import './index.css';
 import App from './App';
 import store from './Redux/store'
 import reportWebVitals from './reportWebVitals';
+import axios from 'axios'
+
+// axios default in local
+// axios.defaults.baseURL= "http://localhost:3001"
+
+// axios default in deploy
+axios.defaults.baseURL= "https://todogames-production.up.railway.app"
 
 ReactDOM.render(
   <Provider store={store}>
