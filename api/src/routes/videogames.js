@@ -3,6 +3,7 @@ const {Router} = require ('express')
 const route= Router()
 const {getGames, getDetail} = require('../controllers/functions')
 const {Videogame,Genre} = require('../db')
+const imgPost = "https://media.istockphoto.com/id/1178429224/vector/red-cross-on-white-background-isolated-vector-illustration-circle-shape-no-button-negative.jpg?s=612x612&w=0&k=20&c=DOtEZDSLR7wze3xYin-oBjJPSSmLm7JvnvQhS1T7-U8="
 
 
 //ruta que trea los juegos solicitados
@@ -24,6 +25,31 @@ route.get('/', async (req,res) => {
         return res.status(400).json({error: error.message})
      }
 })
+
+route.post('/', async (req,res) => {
+   try {
+
+      const {name,img,description,rating,date,genres,platform} = req.body
+            const save = await Videogame.create({
+               name,
+               img,
+               date,
+               rating,
+               description,
+               platform  
+         })
+         genres.map(async (e) => {
+           let post = await Genre.findAll({
+            where : {name: e.toLowerCase()}
+           })
+           await save.addGenre(post)
+         })
+      
+      res.send('creado')
+   } catch (error) {
+      res.status(400).json("error:" + error.message)
+   }
+} )
 
 //ruta que trae un videogame por id
 route.get('/:id', async (req,res) => {

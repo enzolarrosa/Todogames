@@ -11,10 +11,12 @@ export default function Detail() {
   const dispatch = useDispatch();
   useEffect(() => {
       dispatch(getDetail(id));
-      dispatch(setDetail())
   }, [dispatch]);
   const game = useSelector((state) => state.gamesDetail);
-  const d = game[0];
+  var d = game[0];
+  if(!d){
+    d= game
+  }
 
   return (
     <div className={c.conteiner}>
@@ -32,7 +34,7 @@ export default function Detail() {
           </Link>
         </div>
       </div>
-      {d?.image ? (
+      {d?.name ? (
         <div className={c.contMayor}>
           <div className={c.contImg}>
             <p className={c.title}>{d?.name}</p>

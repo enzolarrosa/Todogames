@@ -4,8 +4,10 @@ import s from '../styles/Card.module.css'
 import { AiFillStar } from "react-icons/ai";
 
 
-export default function Card ( {id,name,img,release,rating,description,genre,platform}){ 
-    genre= genre.join(',  ').split(',').join()
+export default function Card ( {id,name,img,release,rating,description,genres,platform}){ 
+    genres= genres.map( e => {return e.name})
+    genres= genres.join(', ').split(',').join()
+
     return (
         <Link style={{textDecoration:'none'}} to={`/detail/${id}`} >
         <div className={s.conteiner}>
@@ -15,7 +17,7 @@ export default function Card ( {id,name,img,release,rating,description,genre,pla
             <div className={s.divP}>
                 <p className={s.title}>{name}</p>
                 <p className={s.rating}> <AiFillStar className={s.icon}/>{rating}</p>
-                <p>Genres: {' ' + genre} </p>
+                <p>Genres: {' ' + genres} </p>
             </div>
         </div>
         </Link> 

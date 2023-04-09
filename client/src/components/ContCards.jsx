@@ -56,7 +56,7 @@ export default function ContCards(){
             } */}
             { !currentGames.length ? <div className={c.contLoading}> <img src='https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif' alt='Loading' /> <p>Loading...</p> </div>: currentGames[0] === 'not'? <div className={c.contLoading}> <img src={not} alt='Loading' /> <p>Not Found...</p> </div> : currentGames.map(e => {
                         return (
-                            <Card key={e.id} id={e.id} name={e.name} img={e.img} release={e.release} rating={e.rating} description={e.description} genre={e.genre} platform={e.platform}   />
+                            <Card key={e.id} id={e.id} name={e.name} img={e.img} release={e.release} rating={e.rating} description={e.description} genres={e.genres} platform={e.platform}   />
                             )})}
             </div>
            <Pagination gamesPage={gamesPage} games={games.length} pagination={pagination} setPage={page} />

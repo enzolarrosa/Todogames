@@ -70,7 +70,7 @@ export default function Create () {
                 </div>
                 <div className={c.divInput}>
                     <label className={c.label}>Image URL</label>
-                    <input className={c.input} placeholder=' '  type="text" {...register('image', {
+                    <input className={c.input} placeholder=' '  type="text" {...register('img', {
                         pattern: /.*(png|jpg|jpeg|gif)$/
                     })}/>
                     {errors.image?.type === 'pattern' && <span className={c.errors}>Insert a url</span>}

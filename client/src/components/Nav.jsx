@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { BiSearchAlt } from "react-icons/bi";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
@@ -34,10 +34,13 @@ export default function Nav() {
     moon.classList.toggle("none");
   }
 
+  const [input , setInput] = useState('')
+  const search = (e) => {
+     setInput(e.target.value)
+  }
   const dispatch = useDispatch();
-  const handleName = async (e) => {
-    e.preventDefault();
-    dispatch(getSearch(e.target.value));
+  const handleName = async () => {
+    dispatch(getSearch(input));
   };
 
   return (
@@ -49,11 +52,11 @@ export default function Nav() {
           </Link>
         </div>
         <div className={n.searchBar}>
-          <button>
+          <button onClick={ () => handleName()}>
             <BiSearchAlt />
           </button>
           <input
-            onChange={(e) => handleName(e)}
+            onChange={(e) => search(e)}
             className={n.input}
             type="search"
             placeholder="Videogame..."

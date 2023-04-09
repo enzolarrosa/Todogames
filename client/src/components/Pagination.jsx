@@ -7,7 +7,7 @@ export default function Pagination({gamesPage, games, pagination, setPage}){
     const pageNumber= []
     const count = games/gamesPage
 
-    for(let i=0; i<= Math.floor(count - 1); i++){
+    for(let i=0; i<= Math.ceil(count - 1); i++){
         pageNumber.push(i+1)
     }
     const end= pageNumber[pageNumber.length - 1]

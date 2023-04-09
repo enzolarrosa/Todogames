@@ -19,7 +19,7 @@ const apiGames = async () => {
             screen: [e.short_screenshots[1].image,e.short_screenshots[2].image,e.short_screenshots[3].image],
             platform: e.platforms.map((e) => e.platform.name
             ),
-            genre: e.genres.map( e => {return e.name})
+            genres: e.genres.map( e => {return {name: e.name}})
           })
         );
         url = api.data.next;
