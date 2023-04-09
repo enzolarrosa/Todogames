@@ -16,7 +16,7 @@ export default function ContCards(){
     const dispatch= useDispatch()
     const games= useSelector(state => state.games)
     const [page, setPage] = useState(1)
-    const [gamesPage ,] = useState(20)
+    const [gamesPage ,] = useState(10)
     const lastGames= page * gamesPage // 1 * 8
     const [, setOrder] = useState('')
     const firtGames= lastGames - gamesPage // 8 - 8

@@ -41,7 +41,7 @@
 }
 
 .contLoading img {
-    width: 23%;
+    width: calc(90% / 2);
     height: 40%;
 }
 
