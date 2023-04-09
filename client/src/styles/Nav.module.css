@@ -15,7 +15,8 @@
 }
 
 .searchBar {
-    width: 30%;
+    width: 45%;
+    height: 50%;
     display: flex;
 }
 

@@ -1,6 +1,6 @@
 .conteiner{
         width: 32rem;
-        height: 16rem;
+        height: 15rem;
         background-color: var(--bgCard);
         display: flex;
         flex-direction: row;
