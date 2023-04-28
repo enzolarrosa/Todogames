@@ -10,7 +10,7 @@ export default function Select ({arr, handle, type}) {
             <select onChange={(e) => handle(e)}>
                 <option>{type}</option>
                 {arr.map(e => {return(
-                <option value={e.name? e.name : e}>{e.name? e.name : e}</option>
+                <option key={e.name? e.name: e} value={e.name? e.name: e}>{e.name? e.name: e}</option>
                 )})}
             </select>
 

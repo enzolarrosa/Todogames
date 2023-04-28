@@ -36,23 +36,21 @@
     width: 100%;
     justify-content: center;
     align-items: center;
-    gap: 10px;
     text-decoration: none;
 }
 
 .link p {
     color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: bold;
     text-decoration: none;
 }
 
-
-.iconHome {
-    color: var(--primary);
-}
-
 .contImg {
     max-width: 100%;
+    width: 100%;
     align-items: center;
     flex-wrap: wrap;
     padding: 20px;
@@ -110,7 +108,7 @@
 
 .info {
     width: 100%;
-    height: 15vh;
+    height: auto;
     display: flex;
     justify-content: space-evenly;
 }
@@ -139,7 +137,6 @@
     margin-top: 20px;
     justify-content: space-evenly;
     display: flex;
-    
 }
 
 .divScreen img {
@@ -150,7 +147,7 @@
 .play {
     border:2px solid var(--fontPrimary);
     padding: 3px;
-    width: 10%;
+    width: 100px;
     border-radius: 3px;
     text-decoration: none;
     color: var(--fontPrimary);
@@ -181,4 +178,26 @@
 .loading p{
     font-size: 1.2rem;
     font-weight: bold;
+}
+
+@media only screen and (max-width: 662px) {
+    .info {
+        flex-wrap: wrap;
+    }
+    .info div {
+        width: 70%;
+    }
+    .contBack {
+        height: 5vh;
+    }
+    .divScreen {
+        justify-content: space-around;
+    }
+    .divScreen img {
+        width: 30%;
+        border-radius: 5px;
+    }
+    .play {
+        width: 85px;
+    }
 }

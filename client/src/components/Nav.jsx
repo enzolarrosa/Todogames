@@ -39,7 +39,7 @@ export default function Nav() {
      setInput(e.target.value)
   }
   const dispatch = useDispatch();
-  const handleName = async () => {
+  const handleName = () => {
     dispatch(getSearch(input));
   };
 

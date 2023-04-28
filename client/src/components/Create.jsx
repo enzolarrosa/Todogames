@@ -1,56 +1,110 @@
 import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {useForm} from 'react-hook-form';
-import {Link} from 'react-router-dom';
-import {nameValidate} from '../functions';
-import {getGenres} from '../Redux/actions/index';
+import {Link, useHistory} from 'react-router-dom';
+import {getGenres, postGame} from '../Redux/actions/index';
 import c from '../styles/Create.module.css';
 
+function validate (input) {
+    const vName = /^[a-zA-Z\s]+$/ ;
+    const vImg= /(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/;
+    let error = {}
+    if (!vName.test(input.name)) {
+        error.name = "Do not use special characters and/or numbers"
+    }
+    if (!vImg.test(input.img)) {
+        error.img = "Is not a image"
+    }
+    if(input.name?.length === 0) {
+        error.name = "Write a name"
+    }
+    if(input.rating?.length === 0) {
+        error.rating = "Choose a rating"
+    }
+    if(input.date?.length === 0) {
+        error.date = "Write a date"
+    }
+    if(input.genres?.length === 0) {
+        error.genres = "Choose a genre"
+    }
+    if(input.platform?.length === 0) {
+        error.platform = "Choose a platform"
+    }
+    if(input.description.length < 10) {
+        error.description= "Write at least 10 characters"
+    }
+    
+    return error
+}
 
 export default function Create () {
 
-    const { register,formState:{errors}, handleSubmit} = useForm()
-
-    const [select, stateSelect] = useState({
+    const [input, setInput] = useState({
+     name:'',
+     img:'',
+     description:'',
+     rating:'',
+     date:'',
      genres:[],
      platform: []
     })
-
+     
+    const [err,setErr] = useState({})
     const dispatch= useDispatch()
+    const history = useHistory()
     const genres = useSelector(state => state.genres)
 
     useEffect(() =>{
         dispatch(getGenres())
-    },[dispatch])
+    },[])
 
     const platforms = ['PC','Linux','PlayStation 2','PlayStation 3','PlayStation 4','PlayStation 5','PSVita','macOS','Nintendo Switch','Android','IOS','Xbox','Xbox 360','Xbox One','Xbox series S/X']
 
-    const submit = async (data) => {
-        const obj= {...data,
-        ...select
+    const onSubmit = async (e) => {
+        e.preventDefault()
+        if(err.name || err.description || err.rating || err.img || err.date || err.genres || err.plaftorm || input.name.length=== 0) {return};
+        if(!err.length){
+            dispatch(postGame(input))
+            history.push('/home')
         }
-        console.log(obj)
-        console.log(select)
+    }
+
+    const handleInputs = (e) =>{
+        e.preventDefault()
+        setInput({
+            ...input,
+            [e.target.name]: e.target.value
+        })
+        setErr(validate({
+            ...input,
+            [e.target.name] : e.target.value
+        }))
     }
 
     const handlePlatform = (e) =>{
         e.preventDefault()
-        console.log('hola: ' + select.platform)
-        if(!select.platform.includes(e.target.value)){
-            stateSelect({
-               ...select,
-               platform: [...select.platform,e.target.value] 
+        if(!input.platform.includes(e.target.value)){
+            setInput({
+                ...input,
+                platform: [...input.platform,e.target.value] 
             }) 
+            setErr(validate({
+                ...input,
+                platform: [...input.platform,e.target.value] 
+            }))
         }
     }
 
-    const hanldeGenres = (e) =>{
+    const handleGenres = (e) =>{
         e.preventDefault()
-        if(!select.genres.includes(e.target.value)){
-            stateSelect({
-               ...select,
-               genres: [...select.genres,e.target.value] 
-            }) 
+        if(!input.genres.includes(e.target.value)){
+            setInput({
+               ...input,
+               genres: [...input.genres,e.target.value] 
+            })
+            setErr(validate({
+                ...input,
+                genres: [...input.genres,e.target.value]
+            }))
         }
     }
 
@@ -58,54 +112,42 @@ export default function Create () {
         <div className={c.conteinerMay}>
         <div className={c.conteiner}>
             <h1 className={c.title}>Create your video game</h1>
-            <form className={c.contFrom} onSubmit={handleSubmit(submit)}>
+            <form className={c.contFrom} onSubmit={(e) => onSubmit(e)}>
                 <div className={c.divInput}>
                     <label className={c.label}>Name</label>
-                    <input className={c.input} placeholder=' ' type="text" {...register('name' , {
-                        required: true,
-                        validate: nameValidate
-                    })}/>
-                    {errors.name?.type === 'required' && <span className={c.errors}>Name is required</span>}
-                    {errors.name?.type !== 'required' && errors.name && <span className={c.errors}> Must contain between 2 and 12 characters</span>}
+                    <input className={c.input} onChange={(e) => handleInputs(e)} name='name' type="text" />
+                    {err.name && <span className={c.errors}>{err.name}</span>}
                 </div>
                 <div className={c.divInput}>
                     <label className={c.label}>Image URL</label>
-                    <input className={c.input} placeholder=' '  type="text" {...register('img', {
-                        pattern: /.*(png|jpg|jpeg|gif)$/
-                    })}/>
-                    {errors.image?.type === 'pattern' && <span className={c.errors}>Insert a url</span>}
+                    <input className={c.input} onChange={(e) => handleInputs(e)} name='img'  type="text" />
+                    {err.img && <span className={c.errors}>{err.img}</span>}
                 </div>
                 <div className={c.divInput}>
                     <label className={c.label}>Description</label>
-                    <textarea className={c.input} cols="30" rows="5" placeholder=' '  {...register('description', {
-                    required:true,
-                    minLength:10
-                    })}></textarea>
-                    {errors.description?.type === 'required' && <span className={c.errors}>Description is required</span>}
-                    {errors.description?.type === 'minLength' && <span className={c.errors}>Must contain at least 10 characters</span>}
+                    <textarea className={c.input} onChange={(e) => handleInputs(e)} cols="30" rows="5" name='description'  ></textarea>
+                    {err.description && <span className={c.errors}>{err.description}</span>}
                 </div>
                 <div className={c.divInput}>
                     <label className={c.label}>Rating</label>
-                    <select className={c.select} {...register('rating', {
-                    required:true
-                    })}>    <option></option>
+                    <select onChange={(e) => handleInputs(e)} name='rating' className={c.select} >
+                            <option></option>
                             <option key={1}  value={1}>1</option>
                             <option key={2}  value={2}>2</option>
                             <option key={3}  value={3}>3</option>
-                            <option key={4}  value={4}>4</option>
+                               <option key={4}  value={4}>4</option>
                             <option key={5}  value={5}>5</option>
                     </select>
+                    {err.rating && <span className={c.errors}>{err.rating}</span>}
                 </div>
                 <div className={c.divInput}>
                     <label className={c.label}>Date</label>
-                    <input className={c.input} placeholder=' '  type="date" {...register('date', {
-                        required:true
-                    })}/>
-                    {errors.date?.type === 'required' && <span className={c.errors}>Date is required</span>}
+                    <input onChange={(e) => handleInputs(e)} className={c.input} name='date'  type="date" />
+                    {err.date && <span className={c.errors}>{err.date}</span>}
                 </div>
                 <div className={c.divInput}>
                     <label className={c.label}>Genres</label>
-                    <select className={c.select} onChange={(e) => hanldeGenres(e) }>
+                    <select className={c.select} onChange={(e) => handleGenres(e) }>
                     <option></option>
                          {genres.length && genres.map( e => (
                             <option name='genres' key={e.id} value={e.name}>
@@ -113,7 +155,7 @@ export default function Create () {
                             </option>
                          ))}
                     </select>
-                    {errors.genres?.type === 'required' && <span>Genres is required</span>}
+                    {err.genres && <span className={c.errors}>{err.genres}</span>}
                 </div>
                 <div className={c.divInput}>
                     <label className={c.label}>Platform</label>
@@ -125,7 +167,7 @@ export default function Create () {
                             </option>
                         ))}
                     </select>
-                    {errors.platform?.type === 'required' && <span>Platform is required</span>}
+                    {err.platform && <span className={c.errors}>{err.platform}</span>}
 
                 </div>
                 <div className={c.divButtons}>

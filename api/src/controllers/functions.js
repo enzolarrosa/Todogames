@@ -8,7 +8,7 @@ const apiGames = async () => {
   try {
       let url = `https://api.rawg.io/api/games?key=${APYKEY}`;
       let arr= []
-      for (i = 0; i < 15; i++) {
+      for (i = 0; i < 8; i++) {
         let api = await axios.get(url);
             api.data.results.map(async (e) => arr.push({
             id: e.id,
@@ -16,7 +16,7 @@ const apiGames = async () => {
             img: e.background_image,
             date: e.released,
             rating: e.rating,
-            screen: [e.short_screenshots[1].image,e.short_screenshots[2].image,e.short_screenshots[3].image],
+            screen: [e.short_screenshots[1]?.image,e.short_screenshots[2]?.image,e.short_screenshots[3]?.image],
             platform: e.platforms.map((e) => e.platform.name
             ),
             genres: e.genres.map( e => {return {name: e.name}})
@@ -39,8 +39,8 @@ const dbGames= async () => {
           through: {
             attributes: []
           }
-      }]}
-    )
+      }]
+    })
     return games
 }
 
@@ -88,19 +88,21 @@ const getDetail = async (id) => {
     return [{
       id: d.id,
       name: d.name,
-      image: d.background_image,
+      img: d.background_image,
       date: d.released,
       rating: d.rating,
       play: d.website,
       description: d.description_raw,
       screen: game[0].screen ,
-      genres: d.genres.map(e => e.name),
+      genres: d.genres,
       platform: d.platforms.map(e => e.platform.name),
     }]
   }
 }
 
 module.exports = {
+  dbGames,
+  apiGames,
   getGames,
   getGenre,
   getDetail

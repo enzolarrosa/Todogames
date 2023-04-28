@@ -2,6 +2,7 @@
     width: 100%;
     height: 100vh;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.464) 25%, rgba(0, 0, 0, 0.459) 87%), url('https://educowebmedia.blob.core.windows.net/educowebmedia/educospain/media/images/blog/9-cosas-que-los-padres-deberian-saber-sobre-league-of-legends-destacada.jpg') ;
+    background-position: center center;
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -28,7 +29,7 @@
 }
 
 .contFrom{
-    width: 80%;
+    width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -40,7 +41,7 @@
 .divInput{
     display: flex;
     flex-direction: column;
-    width: 55%;
+    width: 45%;
     margin: 0;
     padding: 0;
 }
@@ -49,11 +50,11 @@
     outline: none;
     background-color: rgba(255, 255, 255, 0.509);
     height: 20px;
-    max-height: 50px;
+    /* max-height: 50px;
     max-width: 25rem;
     min-width: 25rem;
-    min-height: 20px;
-    width: 25rem;
+    min-height: 20px; */
+    width: 100%;
     border: none;
     border-radius: 9px;
     padding: .2rem;
@@ -64,7 +65,7 @@
     outline: none;
     background-color: rgba(255, 255, 255, 0.509);
     height: 26px;
-    width: 25.5rem;
+    width: 103%;
     border: none;
     border-radius: 9px;
     text-align: center;
@@ -74,6 +75,9 @@
    display: flex;
    color: rgb(255, 34, 34);
    font-weight: bold;
+   padding: 0;
+   margin: 0;
+   height: 5px;
 } 
 
 .label {
@@ -102,9 +106,29 @@
     background-color: green;
     color: white;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .button {
     background-color: red;
+}
+
+@media only screen and (max-width: 531px) {
+    .input {
+        width: 100%;
+    } 
+
+    .divInput{
+        display: flex;
+        flex-direction: column;
+        width: 85%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .select {
+        height: 26px;
+        width: 103%;
+    }
 }
 

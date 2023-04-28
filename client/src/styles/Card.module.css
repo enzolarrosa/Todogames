@@ -1,6 +1,6 @@
 .conteiner{
-        width: 32rem;
-        height: 15rem;
+        width: 40%;
+        height: 13rem;
         background-color: var(--bgCard);
         display: flex;
         flex-direction: row;
@@ -10,6 +10,13 @@
 -webkit-box-shadow: 9px 11px 16px -5px rgba(66, 66, 66, 0.75);
 -moz-box-shadow: 9px 11px 16px -5px rgba(66, 66, 66, 0.75);
         
+}
+
+.cont {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
 .conteiner:hover {
@@ -26,6 +33,7 @@
 }
 
 .divImg img {
+    object-fit: cover;
     width: 100%;
     height: 100%;
     border-top-left-radius: 20px;
@@ -70,3 +78,52 @@
 
 }
 
+
+@media only screen and (max-width: 800px) {
+    .divImg img {
+        object-fit: inherit;
+        width: 100%;
+        height: 100%;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+    .conteiner{
+        width: 46%;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .conteiner{
+        width: 44%;
+    }
+    .divP p {
+        font-size: 0.7rem;
+        text-decoration: red;
+        color: var(--fontPrimary);
+        font-weight: bold;
+    }
+}
+
+@media only screen and (max-width: 620px) {
+    .conteiner{
+        width: 65%;
+    }
+    .divP p {
+        font-size: 0.9rem;
+        text-decoration: red;
+        color: var(--fontPrimary);
+        font-weight: bold;
+    }
+}
+
+@media only screen and (max-width: 498px) {
+    .conteiner{
+        width: 85%;
+    }
+    .divP p {
+        font-size: 0.9rem;
+        text-decoration: red;
+        color: var(--fontPrimary);
+        font-weight: bold;
+    }
+}

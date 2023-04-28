@@ -1,7 +1,7 @@
 require('dotenv').config()
 const {Router} = require ('express')
 const route= Router()
-const {getGames, getDetail} = require('../controllers/functions')
+const {apiGames, getDetail, dbGames} = require('../controllers/functions')
 const {Videogame,Genre} = require('../db')
 const imgPost = "https://media.istockphoto.com/id/1178429224/vector/red-cross-on-white-background-isolated-vector-illustration-circle-shape-no-button-negative.jpg?s=612x612&w=0&k=20&c=DOtEZDSLR7wze3xYin-oBjJPSSmLm7JvnvQhS1T7-U8="
 
@@ -10,15 +10,16 @@ const imgPost = "https://media.istockphoto.com/id/1178429224/vector/red-cross-on
 route.get('/', async (req,res) => {
      try {
         const {name} = req.query
-        const allGames = await getGames();
+        const db = await dbGames()
+        const api = await apiGames()
+        const all = db.concat(api)
         //si mandan name por query, hago la busqueda de un juego que incluya ese name
         if(name) {
-            const game= allGames.filter(e => e.name.toLowerCase().includes(name.toLowerCase()))
-            if (game.length) {return res.json(game)}
-            else {return res.send('not')}
+            const game= all.filter(e => e.name.toLowerCase().includes(name.toLowerCase()))
+            return game.length?  res.json(game) :  res.send('not found')
         }
         //si no mandan query, retorno todos los juegos 
-        return res.json(allGames)
+        return res.json(all)
 
      } catch (error) {
         console.log(error.message)

@@ -24,13 +24,11 @@ export default function Detail() {
         <div>
           <Link className={c.link} to="/home">
             <p>Home</p>
-            <AiFillHome className={c.iconHome} />
           </Link>
         </div>
         <div className={c.divBack}>
           <Link className={c.link} to="/create">
             <p>Create</p>
-            <BsPlusCircleFill className={c.iconHome} />
           </Link>
         </div>
       </div>
@@ -38,7 +36,7 @@ export default function Detail() {
         <div className={c.contMayor}>
           <div className={c.contImg}>
             <p className={c.title}>{d?.name}</p>
-            <img src={d?.image} />
+            <img src={d?.img} />
           </div>
           <div className={c.contSection}>
             <p className={c.subtitle}>Description</p>
@@ -47,7 +45,7 @@ export default function Detail() {
             <div className={c.info}>
               <div>
                 <p className={c.aditional}>Genre</p>
-                <p className={c.aditionalP}>{d?.genres.join(", ").split(",").join()}</p>
+                <p className={c.aditionalP}>{d?.genres.map(e => e.name).join(", ").split(",").join()}</p>
               </div>
               <div>
                 <p className={c.aditional}>Platform</p>
@@ -72,9 +70,12 @@ export default function Detail() {
                 </div>
               </div>
             )}
+            {
+            d?.play &&
             <a className={c.play} href={d?.play}>
               Play game
             </a>
+            }
           </div>
         </div>
       ) : (

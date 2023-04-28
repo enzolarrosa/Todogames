@@ -5,6 +5,9 @@ export const GET_GENRES = 'GET_GENRES'
 export const GET_DETAIL = 'GET_DETAIL'
 export const GET_SEARCH = 'GET_SEARCH'
 export const SET_DETAIL = 'SET_DETAIL'
+export const FILTER_GENRE = 'FILTER_GENRE'
+export const ORDER_GAME = 'ORDER_GAME'
+export const POST_DOG= 'POST_DOG'
 
 export const getGames = () => {
     return async function (dispatch) {
@@ -51,6 +54,27 @@ export const getDetail = (id) => {
         payload: info.data
       })
     }
+}
+
+export const filterGenre = (payload) => {
+  return {
+    type: FILTER_GENRE,
+    payload,
+  }
+}
+
+export const orderGame = (payload) => {
+  return {
+    type: ORDER_GAME,
+    payload,
+  }
+}
+
+export const postGame = (payload) => { 
+  return async function () {
+      const info = await axios.post('/videogames', payload)
+      return info
+  }
 }
 
 export const setDetail = () => {

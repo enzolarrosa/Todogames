@@ -14,34 +14,42 @@
 }
 
 #sun{
-  width: 30px;
-  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
   background-color: rgba(59, 59, 59, 0);
   color: rgb(255, 255, 255);
   font-size: 1.5rem;
   cursor: pointer;
-  border: 1px solid white;
-  padding: 3px;
+  border: 2px solid white;
+  border-radius: 8px;
 }
 
 #moon{
-  width: 30px;
-  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
   background-color: rgba(59, 59, 59, 0);
   color: rgb(255, 255, 255);
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  border: 1px solid white;
-  padding: 3px;
+  border: 2px solid white;
+  border-radius: 8px;
 }
 
 #moon:hover {
   color: rgb(237, 238, 148);
+  border-color: rgb(237, 238, 148);
 }
 
 #sun:hover {
   color: rgb(237, 238, 148);
+  border-color: rgb(237, 238, 148);
 }
 
 .App-header {

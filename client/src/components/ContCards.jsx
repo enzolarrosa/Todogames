@@ -1,17 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import {getGames, getGenres} from '../Redux/actions/index'
+import {filterGenre, getGames, getGenres, orderGame} from '../Redux/actions/index'
 import Card from './Card';
 import Pagination from './Pagination';
 import c from '../styles/ContCards.module.css'
 import Select from './Select';
 import not from '../img/not.png'
 
-
-
 export default function ContCards(){
-
-
 
     const dispatch= useDispatch()
     const games= useSelector(state => state.games)
@@ -22,10 +18,11 @@ export default function ContCards(){
     const firtGames= lastGames - gamesPage // 8 - 8
     const currentGames= games.slice(firtGames,lastGames) //
     const allGenres= useSelector( state => state.genres)
+
     useEffect(() => {
         dispatch(getGames())
         dispatch(getGenres())
-    },[games])
+    },[dispatch])
 
     const pagination = (pageNumber) => {
         setPage(pageNumber)
@@ -33,12 +30,14 @@ export default function ContCards(){
 
     const handleOrder = async (e) => {
         e.preventDefault()
-        
+        dispatch(orderGame(e.target.value))
+        setOrder(`${e.target.value}`)
     }
 
     const handleFilter = async (e) => {
         e.preventDefault()
-
+        dispatch(filterGenre(e.target.value))
+        setPage(1)
     }
 
     return(
@@ -48,15 +47,9 @@ export default function ContCards(){
                 <Select arr={allGenres} handle={handleFilter} type={'Filter By:'}/>
             </div>
             <div className={c.contMenor}>
-            {/* { !currentGames.length ? <div className={c.contLoading}> <img src='https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif' alt='Loading' /> <p>Loading...</p> </div> : currentGames == 'not'? <div className={c.contLoading}> <img src={not} alt='Loading' /> <p>Not Found...</p> </div> :
-            currentGames.map(e => {
-                return (
-                    <Card key={e.id} id={e.id} name={e.name} img={e.img} release={e.release} rating={e.rating} description={e.description} genre={e.genre} platform={e.platform}   />
-                    )})
-            } */}
-            { !currentGames.length ? <div className={c.contLoading}> <img src='https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif' alt='Loading' /> <p>Loading...</p> </div>: currentGames[0] === 'not'? <div className={c.contLoading}> <img src={not} alt='Loading' /> <p>Not Found...</p> </div> : currentGames.map(e => {
+            { !currentGames.length ? <div className={c.contLoading}> <img src='https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif' alt='Loading' /> <p>Loading...</p> </div>: games === 'not found'? <div className={c.contLoading}> <img src={not} alt='Loading' /> <p>No games...</p> </div> : currentGames.map(e => {
                         return (
-                            <Card key={e.id} id={e.id} name={e.name} img={e.img} release={e.release} rating={e.rating} description={e.description} genres={e.genres} platform={e.platform}   />
+                            <Card key={e.id} id={e.id} name={e.name} img={e.img} rating={e.rating} genres={e.genres} />
                             )})}
             </div>
            <Pagination gamesPage={gamesPage} games={games.length} pagination={pagination} setPage={page} />

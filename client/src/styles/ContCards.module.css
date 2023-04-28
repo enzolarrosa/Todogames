@@ -52,3 +52,31 @@
     font-size: 1.3rem;
     font-weight: bold;
 }
+
+@media only screen and (max-width: 690px) {
+    .contSelect select {
+        width: 17%;
+        height: 40%;
+    }
+}
+
+@media only screen and (max-width: 494px) {
+    .contSelect select {
+        width: 20%;
+        height: 40%;
+    }
+}
+
+@media only screen and (max-width: 418px) {
+    .contSelect select {
+        width: 25%;
+        height: 40%;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .contSelect select {
+        width: 35%;
+        height: 40%;
+    }
+}

@@ -15,6 +15,7 @@
 .contMenor p {
     display: flex;
     height: 80%;
+    user-select: none;
     width: 5rem;
     border: none;
     color: var(--fontPrimary);
