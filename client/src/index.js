@@ -11,7 +11,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 // axios default in local
-axios.defaults.baseURL= "http://localhost:3001"
+axios.defaults.baseURL= process.env.REACT_APP_API || "http://localhost:3001"
 
 // axios default in deploy
 // axios.defaults.baseURL= "https://todogames-production.up.railway.app"
